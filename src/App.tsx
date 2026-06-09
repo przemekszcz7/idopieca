@@ -413,7 +413,7 @@ export default function App() {
               Na życzenie każdą zapiekankę zamienimy bezpłatnie
             </p>
             <p className="text-xs sm:text-sm font-sans text-[#A89880] italic">
-              * ceny podane za wersje: <span className="text-[#E8621A] font-semibold">XXL (ok. 50cm)</span> / <span className="text-white font-semibold">XL (ok. 30cm)</span>
+              * ceny podane za wersje: <span className="text-[#E8621A] font-semibold">XXL</span> / <span className="text-white font-semibold">XL</span>
             </p>
           </div>
 
