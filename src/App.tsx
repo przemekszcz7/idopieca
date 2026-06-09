@@ -174,7 +174,7 @@ export default function App() {
           
           {/* Logo Left */}
           <a href="#hero" className="flex flex-col select-none group">
-            <span className="font-bebas text-2xl sm:text-3xl tracking-wide text-white group-hover:text-[#E8621A] transition-colors duration-300 leading-none">
+            <span className="font-bebas text-xl xs:text-2xl sm:text-3xl tracking-wide text-white group-hover:text-[#E8621A] transition-colors duration-300 leading-none">
               MANUFAKTURA ZAPIEKANKI
             </span>
             <span className="font-dancing text-[#E8621A] text-sm self-start tracking-wide leading-none mt-1 pl-1">
@@ -208,7 +208,7 @@ export default function App() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="fixed inset-0 z-45 bg-[#0D0D0D] flex flex-col justify-center items-center h-screen w-screen block"
+            className="fixed inset-0 z-45 bg-[#0D0D0D] flex flex-col justify-center items-center h-screen w-full block"
           >
             <div className="absolute top-6 left-6">
               <span className="font-bebas text-xl text-white">MANUFAKTURA ZAPIEKANKI</span>
@@ -255,8 +255,8 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="font-bebas text-white tracking-widest leading-none drop-shadow-2xl neon-glow"
-            style={{ fontSize: "clamp(3.5rem, 9vw, 8rem)" }}
+            className="font-bebas text-white tracking-widest leading-none drop-shadow-2xl neon-glow break-words"
+            style={{ fontSize: "clamp(2rem, 9vw, 8rem)" }}
           >
             MANUFAKTURA ZAPIEKANKI
           </motion.h1>
@@ -486,14 +486,16 @@ export default function App() {
                 <p className="text-center text-[#A89880] py-6 italic text-sm">Nie znaleziono pozycji w tej kategorii dla "{searchQuery}"</p>
               ) : (
                 /* Cards CSS Grid */
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredPolish.map((item, idx) => (
-                    <motion.div 
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {filteredPolish.map((item) => (
+                    <div 
                       key={item.id}
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.4, delay: Math.min((idx % 3) * 0.1, 0.3) }}
                       className="card-noise bg-[#1E1B18] p-6 border-l-0 hover:border-l-4 hover:border-[#E8621A] card-bracket relative flex flex-col justify-between h-56 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl group"
                     >
                       <div className="space-y-2">
@@ -513,9 +515,9 @@ export default function App() {
                           {item.priceXXL} / {item.priceXL} zł
                         </span>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
-                </div>
+                </motion.div>
               )}
             </div>
           )}
@@ -536,14 +538,16 @@ export default function App() {
                 <p className="text-center text-[#A89880] py-6 italic text-sm">Nie znaleziono pozycji w tej kategorii dla "{searchQuery}"</p>
               ) : (
                 /* Cards CSS Grid */
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredWorld.map((item, idx) => (
-                    <motion.div 
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {filteredWorld.map((item) => (
+                    <div 
                       key={item.id}
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.4, delay: Math.min((idx % 3) * 0.1, 0.3) }}
                       className="card-noise bg-[#1E1B18] p-6 border-l-0 hover:border-l-4 hover:border-[#E8621A] card-bracket relative flex flex-col justify-between h-56 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl group"
                     >
                       <div className="space-y-2">
@@ -564,9 +568,9 @@ export default function App() {
                           {item.priceXXL} / {item.priceXL} zł
                         </span>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
-                </div>
+                </motion.div>
               )}
             </div>
           )}
@@ -623,7 +627,7 @@ export default function App() {
           <div className="bg-[#1E1B18]/60 p-6 sm:p-8 rounded-[3px] border border-[#2A2520] card-noise space-y-6">
             
             {/* Display lotto-like random simulation balls */}
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
               {rollNumbers.length > 0 ? (
                 rollNumbers.map((num, idx) => (
                   <motion.div 
@@ -631,7 +635,7 @@ export default function App() {
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ type: "spring", stiffness: 300, delay: idx * 0.05 }}
-                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-bebas text-lg tracking-normal shadow-lg ${
+                    className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-bebas text-sm sm:text-lg tracking-normal shadow-lg ${
                       idx === 5 
                         ? "bg-[#E8621A] text-black border-2 border-white animate-pulse" 
                         : "bg-black text-[#F5EFE6] border border-[#E8621A]/40"
@@ -641,9 +645,9 @@ export default function App() {
                   </motion.div>
                 ))
               ) : (
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
                   {[1, 2, 3, 4, 5, "?"].map((placeholder, idx) => (
-                    <div key={idx} className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/50 border border-[#231A14] flex items-center justify-center font-bebas text-lg text-[#A89880]/30 select-none">
+                    <div key={idx} className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-black/50 border border-[#231A14] flex items-center justify-center font-bebas text-sm sm:text-lg text-[#A89880]/30 select-none">
                       {placeholder}
                     </div>
                   ))}
@@ -729,14 +733,16 @@ export default function App() {
           </div>
 
           {/* Masonry-like dynamic Columns Layout */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance] box-border">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance] box-border"
+          >
             {galleryImages.map((src, index) => (
-              <motion.div 
+              <div 
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="break-inside-avoid mb-4 overflow-hidden rounded-[2px] cursor-pointer group relative bg-black border border-[#E8621A]/10 shadow-lg"
                 onClick={() => setLightboxIndex(index)}
               >
@@ -753,9 +759,9 @@ export default function App() {
                     <Compass className="w-3.5 h-3.5" /> Powiększ zdjęcie
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </div>
+          </motion.div>
 
         </div>
       </section>
@@ -866,7 +872,7 @@ export default function App() {
                 “
               </span>
               
-              <blockquote className="font-sans font-light text-lg sm:text-xl text-[#F5EFE6] italic leading-relaxed pl-1 pl-sm-4">
+              <blockquote className="font-sans font-light text-lg sm:text-xl text-[#F5EFE6] italic leading-relaxed pl-1 sm:pl-4">
                 Najlepsze zapiekanki w całym regionie ❤️ Przemiła Pani, która dba o każdy szczegół ❤️ zawsze świeżo i pysznie! Nic dodać nic ująć! Miejsce, które warto odwiedzić!
               </blockquote>
 
