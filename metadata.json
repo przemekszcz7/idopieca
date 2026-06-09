@@ -1,0 +1,6 @@
+{
+  "name": "Manufaktura Zapiekanki",
+  "description": "Craft zapiekanka bar in Krosno, Poland, featuring 26+ artisan open-faced baguette sandwiches inspired by traditional Polish regions and global flavors.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

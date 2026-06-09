@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  --black: #0D0D0D;
+  --orange: #E8621A;
+  --orange-deep: #C44E0F;
+  --orange-light: #FF7A2F;
+  --surface: #161616;
+  --card-surface: #1E1B18;
+  --warm-off-white: #F5EFE6;
+  --text-muted: #A89880;
+  --white: #FFFFFF;
+  --warm-gray: #2A2520;
+
+  /* Font mappings */
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-dancing: 'Dancing Script', cursive;
+  --font-sans: 'Nunito', sans-serif;
+}
+
+@theme {
+  --font-sans: 'Nunito', sans-serif;
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-dancing: 'Dancing Script', cursive;
+
+  --color-brand-bg: #0D0D0D;
+  --color-brand-primary: #E8621A;
+  --color-brand-deep: #C44E0F;
+  --color-brand-light: #FF7A2F;
+  --color-brand-surface: #161616;
+  --color-brand-card: #1E1B18;
+  --color-brand-warm-white: #F5EFE6;
+  --color-brand-muted: #A89880;
+  --color-brand-warm-gray: #2A2520;
+}
+
+/* Global resetting & design elements */
+body {
+  background-color: var(--black);
+  color: var(--warm-off-white);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings in Bebas Neue */
+.heading-bebas {
+  font-family: var(--font-bebas);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.heading-dancing {
+  font-family: var(--font-dancing);
+}
+
+.text-spacing-wide {
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+}
+
+/* Blackboard/Papercraft noise background texture */
+.chalkboard-noise {
+  background-color: var(--black);
+  background-image: 
+    linear-gradient(rgba(13, 13, 13, 0.96), rgba(13, 13, 13, 0.98)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+.card-noise {
+  background-color: var(--card-surface);
+  background-image: 
+    linear-gradient(rgba(30, 27, 24, 0.96), rgba(30, 27, 24, 0.99)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Bracket corners [ ] */
+.bracket-container {
+  position: relative;
+}
+
+.bracket-container::before,
+.bracket-container::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--orange);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.bracket-container::before {
+  top: -12px;
+  left: -12px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.bracket-container::after {
+  bottom: -12px;
+  right: -12px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Small card corner bracket indicator */
+.card-bracket {
+  position: relative;
+}
+
+.card-bracket::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--orange);
+  border-right: 2px solid var(--orange);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.card-bracket:hover::after {
+  width: 18px;
+  height: 18px;
+  border-top-color: var(--orange-light);
+  border-right-color: var(--orange-light);
+}
+
+/* Map dotted route separators */
+.dot-lead {
+  flex-grow: 1;
+  border-bottom: 2px dotted rgba(168, 152, 128, 0.3);
+  margin: 0 10px;
+  align-self: flex-end;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.dot-lead::after {
+  content: "✦";
+  color: var(--orange);
+  position: absolute;
+  right: 40%;
+  bottom: -6px;
+  font-size: 8px;
+  opacity: 0.7;
+}
+
+/* Neon Orange Highlight effects */
+.neon-glow {
+  text-shadow: 0 0 20px rgba(232, 98, 26, 0.61), 0 0 40px rgba(232, 98, 26, 0.3);
+}
+
+.neon-box-glow {
+  box-shadow: 0 0 20px rgba(232, 98, 26, 0.25);
+}
+
+.neon-box-glow-strong {
+  box-shadow: 0 0 30px rgba(232, 98, 26, 0.5);
+}
+
+/* Navigation scroll-underline styling */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--orange);
+  transform-origin: bottom left;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px; /* Offset for sticky nav */
+}
+
+/* Bouncing scrolls */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+.bounce-chevron {
+  animation: bounce-slow 2s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--warm-gray);
+  border: 2px solid var(--black);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange);
+}
